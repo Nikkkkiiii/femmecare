@@ -16,7 +16,7 @@ class On_board extends StatelessWidget {
         decoration: BoxDecoration(color: Color.fromARGB(255, 235, 87, 136)),
         child: SafeArea(
           child: Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
             image: DecorationImage(
                 // fit: BoxFit.cover, 
                 image: AssetImage("assets/Logo.png"))),
