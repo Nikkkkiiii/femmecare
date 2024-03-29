@@ -30,8 +30,8 @@ class User {
 
   factory User.fromMap(Map<String, dynamic> map) {
     return User(
-      accessToken: map['access'] as String,
-      refreshToken: map['refresh'] as String,
+      accessToken: map['accessToken'] as String,
+      refreshToken: map['refreshToken'] as String,
     );
   }
 

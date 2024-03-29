@@ -1,5 +1,8 @@
 import 'package:femmecare/bloc/login/login_bloc.dart';
+import 'package:femmecare/bloc/signup/signup_bloc.dart';
 import 'package:femmecare/data/login/login_repo.dart';
+import 'package:femmecare/data/signup/signup_repo.dart';
+// import 'package:femmecare/data/login/login_repo.dart';
 import 'package:femmecare/presentations/channel.dart';
 import 'package:femmecare/presentations/dashboard.dart';
 import 'package:femmecare/presentations/signup.dart';
@@ -27,12 +30,17 @@ class MyApp extends StatelessWidget {
 
     return MultiBlocProvider(
         providers: [
+          
           BlocProvider(
-            create: (context) =>
-                LoginBloc(loginRepo: LoginRepo()),
+            create: (context)=>
+              SignupBloc(SignupRepo:SignupRepo()),
             child: Container(),
           ),
-         
+          BlocProvider(
+            create: (context) =>
+                LoginBloc(LoginRepo:LoginRepo()),
+            child: Container(),
+          ),
          
         ],
         child: MaterialApp(
@@ -43,7 +51,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Login(),
+      home: Signup(),
       // initialRoute: "/signUp",
       routes: {
         '/signUp': (context) => Signup(),

@@ -6,47 +6,47 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 part 'login_event.dart';
 part 'login_state.dart';
 
-class LoginBloc extends Bloc<LoginEvent, LoginState>{
-  final LoginRepo loginRepo;
+class LoginBloc extends Bloc<LoginEvent, LoginState> {
+  LoginBloc({required LoginRepo LoginRepo}) : super(LoginInitial()) {
+    on<LoginEvent>((event, emit) => loginList(event, emit ));
+  }
 
-  LoginBloc({required this.loginRepo}): super(LoginInitial());
+  void loginList(LoginEvent event, Emitter<LoginState> emit) async {
+    if (event is LoginButtonPressed) {
+      emit(LoginLoading());
+      try {
+        print("hihihi");
+        User user = await LoginRepo().loginUser(
+            email: event.email,
+            password: event.password
+            );
+            print("hello");
+        emit(LoginSuccess(user: user));
+      } catch (error) {
+        if (error is DioException) {
+          // String errorMessage = "An error occurred. Please try again.";
+          if (error.response != null) {
+            final statusCode = error.response!.statusCode;
+            if (statusCode == 522) {
+              emit(LoginFailure(
+                  error: 'Connection timed out. Please try again later.'));
+            
+            } else {
+              emit(LoginFailure(
+                  error: error.response?.data["message"][0]));
+            }
+          } else {
+          print(error);
 
-  // @override
-  Stream<LoginState>mapEventToState(LoginEvent event)async*{
-    if (event is LoginButtonPressed){
-      yield LoginLoading();
-
-      try{
-        User user = await loginRepo.loginUser(event.email, event.password);
-        yield LoginSuccess(user: user);
-      }
-      catch(error){
-        if(error is DioException){
-          if(error.response !=null){
-            final statuscode = error.response!.statusCode;
-            if(statuscode == 522){
-              yield LoginFailure(error: 'Connection timed out. Please try again later.');
-            }
-            else if(statuscode == 401){
-              yield LoginFailure(error: 'Please make sure the username and password is correct.');
-            }
-            else{
-              yield LoginFailure(error: "Something went wrong, please try again later");
-            }
+            emit(LoginFailure(
+                error: "Something went wrong, please try again later. i am being thrown"));
           }
-          else{
-          yield LoginFailure(error: error.response?.data["message"][0]);
+        } else {
+          print(error);
+          emit(LoginFailure(
+              error: "Something went wrong, please try again laterrrr."));
         }
-        }
-        else{
-          yield LoginFailure(error: "Something went wrong, please try again later");
-        }
-        
       }
-    }
-    else if(event is LogoutButtonPressed){
-      await loginRepo.logoutUser();
-      yield LoginInitial();
     }
   }
 }

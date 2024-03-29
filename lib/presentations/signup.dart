@@ -1,4 +1,4 @@
-// import 'package:femmecare/logic/signup/signup_bloc.dart';
+import 'package:femmecare/bloc/signup/signup_bloc.dart';
 import 'package:femmecare/presentations/login.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -14,54 +14,59 @@ class Signup extends StatefulWidget {
 class _SignUpState extends State<Signup> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  TextEditingController confirmPasswordController = TextEditingController();
+  // TextEditingController confirmPasswordController = TextEditingController();
   TextEditingController phoneNumberController = TextEditingController();
- 
+  TextEditingController usernameController = TextEditingController();
   TextEditingController addressController = TextEditingController();
+  // TextEditingController firstNameController = TextEditingController();
+  // TextEditingController lastNameController = TextEditingController();
+  // TextEditingController profileImageController = TextEditingController();
 
   bool value = false;
   bool _showPassword = false;
+  final signupFormKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    // return BlocListener<Signupblock, SignupState>(
-    //     listener: (context, state) {
-    //       if (state is SignupError) {
-    //         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-    //           content: Text(
-    //             '${state.message}',
-    //           ),
-    //           duration: const Duration(seconds: 1),
-    //         ));
-    //       }
-    //       if (state is SignupLoading) {
-    //         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-    //           content: Text('Please Wait'),
-    //           duration: Duration(seconds: 1),
-    //         ));
-    //       }
-    //       if (state is SignupLoaded) {
-    //         ScaffoldMessenger.of(context).showSnackBar(
-    //           const SnackBar(
-    //             content: Text('Success'),
-    //             duration: Duration(seconds: 1),
-    //           ),
-    //         );
-    //         print("\n\n\n");
-    //         // print(state.signupModel.otp_key);
-    //         print("\n\n\n");
+    return BlocListener<SignupBloc, SignupState>(
+        listener: (context, state) {
+          if (state is SignupFailure) {
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text(
+                '${state.error}',
+              ),
+              duration: const Duration(seconds: 1),
+            ));
+          }
+          // print('i amahere');
+          if (state is SignupLoading) {
+            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+              content: Text('Please Wait'),
+              duration: Duration(seconds: 1),
+            ));
+          }
+          if (state is SignupSuccess) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('Success'),
+                duration: Duration(seconds: 1),
+              ),
+            );
+            // print("\n\n\n");
+            // // print(state.signupModel.otp_key);
+            // print("\n\n\n");
 
-    //         // Navigator.push(
-    //         //     context,
-    //         //     GeneratedRoute().onGeneratedRoute(RouteSettings(arguments: {
-    //         //       'otp_key': state.signupModel.otp_key,
-    //         //       'email': state.signupModel.email
-    //         //     }, name: '/otp')));
+            // Navigator.push(
+            //     context,
+            //     GeneratedRoute().onGeneratedRoute(RouteSettings(arguments: {
+            //       'otp_key': state.signupModel.otp_key,
+            //       'email': state.signupModel.email
+            //     }, name: '/otp')));
 
-    //         Navigator.pushReplacementNamed(context, '/cal');
-    //       }
-    //     },
-        return Scaffold(
+            Navigator.pushReplacementNamed(context, '/login');
+          }
+        },
+        child: Scaffold(
           backgroundColor: Colors.pink,
           body: SafeArea(
             child: SingleChildScrollView(
@@ -78,7 +83,6 @@ class _SignUpState extends State<Signup> {
                         horizontal: 40, vertical: 16),
                     child: TextFormField(
                       controller: emailController,
-                      
                       decoration: const InputDecoration(
                         border: UnderlineInputBorder(),
                         labelText: 'Email',
@@ -97,7 +101,6 @@ class _SignUpState extends State<Signup> {
                       decoration: const InputDecoration(
                         border: UnderlineInputBorder(),
                         labelText: 'Phone Number',
-                        
                         labelStyle: TextStyle(color: Colors.white),
                         enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
@@ -136,14 +139,15 @@ class _SignUpState extends State<Signup> {
                       ),
                     ),
                   ),
-                  Padding(
+                   Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 40, vertical: 16),
                     child: TextFormField(
-                      controller: confirmPasswordController,
+                      controller: usernameController,
                       decoration: const InputDecoration(
                         border: UnderlineInputBorder(),
-                        labelText: 'Confirm Password',
+                        labelText: 'Username',
+                        // suffix: buildPasswordToggleIcon(),
                         labelStyle: TextStyle(color: Colors.white),
                         enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
@@ -151,6 +155,21 @@ class _SignUpState extends State<Signup> {
                       ),
                     ),
                   ),
+                  // Padding(
+                  //   padding: const EdgeInsets.symmetric(
+                  //       horizontal: 40, vertical: 16),
+                  //   child: TextFormField(
+                  //     // controller: confirmPasswordController,
+                  //     decoration: const InputDecoration(
+                  //       border: UnderlineInputBorder(),
+                  //       labelText: 'Confirm Password',
+                  //       labelStyle: TextStyle(color: Colors.white),
+                  //       enabledBorder: UnderlineInputBorder(
+                  //         borderSide: BorderSide(color: Colors.white),
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
                   Row(
                     children: [
                       Checkbox(
@@ -181,37 +200,40 @@ class _SignUpState extends State<Signup> {
                   const SizedBox(
                     height: 50,
                   ),
-                  // ElevatedButton(
-                  //   onPressed: () {
-// print(emailController.text);
-//                       context.read<Signupblock>().add(
-//                             SignupClickedEvent(
-//                               email: emailController.text,
-//                               password: passwordController.text,
-//                               // confirmPassword : confirmPasswordController.text,
-          
-//                               address: addressController.text, 
-//                               phone_number: phoneNumberController.text,
-//                             ),
-//                           );
+                  ElevatedButton(
+                    onPressed: () {
+                      print(emailController.text);
+                      context.read<SignupBloc>().add(
+                            SignupButtonPressed(
+                                email: emailController.text,
+                                password: passwordController.text,
+                                address: addressController.text,
+                                // firstName: firstNameController.text,
+                                // lastName: lastNameController.text,
+                                // profileImage: profileImageController.text,
+                                username: usernameController.text,
+                                // confirmPassword : confirmPasswordController.text,
+                                phone_number: phoneNumberController.text,
+                                ),
+                          );
 
-//                       Navigator.pushReplacementNamed(context, '/login');
-//                       // Perform an action when the button is pressed
-//                     },
-                    // style: ElevatedButton.styleFrom(
-                    //   backgroundColor: Colors.white,
-                    //   fixedSize: Size(200, 50),
-                    //   // elevation: 4,
-                    // ),
-                    // child: const Text(
-                    //   'Signup',
-                    //   style: TextStyle(
-                    //     fontSize: 16,
-                    //     fontWeight: FontWeight.bold,
-                    //     color: Colors.pink,
-                    //   ),
-                    // ),
-                  // ),
+                      // Navigator.pushReplacementNamed(context, '/login');
+                      // Perform an action when the button is pressed
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      fixedSize: Size(200, 50),
+                      // elevation: 4,
+                    ),
+                    child: const Text(
+                      'Signup',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.pink,
+                      ),
+                    ),
+                  ),
                   const SizedBox(
                     height: 22,
                   ),
@@ -249,7 +271,7 @@ class _SignUpState extends State<Signup> {
               ),
             ),
           ),
-        );
+        ));
   }
 
   Widget buildPasswordToggleIcon() {
