@@ -18,9 +18,9 @@ class LoginRepo{
       },
     );
     
-    print("repo");
+    // print("repo");
     print(response.data);
-    print("repo");
+    // print("repo");
     print(response.data);
     // var decoded=jsonDecode(response.data);
     User user = User.fromMap(response.data);

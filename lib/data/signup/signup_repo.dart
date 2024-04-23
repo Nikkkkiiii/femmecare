@@ -1,7 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:femmecare/constant/apis.dart';
-// import 'package:femmecare/data/login/login_model.dart';
-// import 'package:femmecare/utils/shared_preferences.dart';
 
 class SignupRepo{
   final Dio dio = Dio();

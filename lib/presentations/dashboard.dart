@@ -1,5 +1,5 @@
 import 'package:femmecare/presentations/calendar.dart';
-import 'package:femmecare/presentations/chatList.dart';
+import 'package:femmecare/presentations/chatt/chatList.dart';
 import 'package:femmecare/presentations/map_page.dart';
 import 'package:femmecare/presentations/notification.dart';
 import 'package:femmecare/presentations/profile.dart';
@@ -203,170 +203,176 @@ class CategoriesScroller extends StatelessWidget {
   Widget build(BuildContext context) {
     final double categoryHeight =
         MediaQuery.of(context).size.height * 0.30 - 50;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(height: 10,),
-        const Padding(
-          padding:  EdgeInsets.only(left: 20, top: 20),
-          child: Text(
-            'Channel',
-            style: TextStyle(
-              fontFamily: 'Poppins',
-              fontSize: 24,
-              color: Colors.pink,
-              fontWeight: FontWeight.bold,
+    return InkWell(
+      onTap: (){
+        Navigator.pushReplacementNamed(context, '/art');
+
+      },
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(height: 10,),
+          const Padding(
+            padding:  EdgeInsets.only(left: 20, top: 20),
+            child: Text(
+              'Channel',
+              style: TextStyle(
+                fontFamily: 'Poppins',
+                fontSize: 24,
+                color: Colors.pink,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
-        ),
-        SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          scrollDirection: Axis.horizontal,
-          child: Container(
-            margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-            child: FittedBox(
-              alignment: Alignment.topCenter,
-              child: Row(
-                children: <Widget>[
-                  Container(
-                    width: 150,
-                    margin: const EdgeInsets.only(right: 20),
-                    height: categoryHeight,
-                    decoration: BoxDecoration(
-                        color: Colors.orange.shade400,
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(20.0))),
-                    child: Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.pushReplacementNamed(context, '/chan');
-                        },
-                        child: const Column(
+          SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            scrollDirection: Axis.horizontal,
+            child: Container(
+              margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+              child: FittedBox(
+                alignment: Alignment.topCenter,
+                child: Row(
+                  children: <Widget>[
+                    Container(
+                      width: 150,
+                      margin: const EdgeInsets.only(right: 20),
+                      height: categoryHeight,
+                      decoration: BoxDecoration(
+                          color: Colors.orange.shade400,
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(20.0))),
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.pushReplacementNamed(context, '/chan');
+                          },
+                          child: const Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                "Hygienic\nFood",
+                                style: TextStyle(
+                                  fontSize: 25,
+                                  color: Colors.pink,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                "20 Items",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      width: 150,
+                      margin: const EdgeInsets.only(right: 20),
+                      height: categoryHeight,
+                      decoration: BoxDecoration(
+                          color: Colors.blue.shade400,
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(20.0))),
+                      child: const Padding(
+                        padding: EdgeInsets.all(12.0),
+                        child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text(
-                              "Hygienic\nFood",
+                              "Newest",
                               style: TextStyle(
-                                fontSize: 25,
-                                color: Colors.pink,
-                                fontWeight: FontWeight.bold,
-                              ),
+                                  fontSize: 25,
+                                  color: Colors.pink,
+                                  fontWeight: FontWeight.bold),
                             ),
                             SizedBox(
                               height: 10,
                             ),
                             Text(
                               "20 Items",
-                              style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.white,
-                              ),
+                              style: TextStyle(fontSize: 16, color: Colors.white),
                             ),
                           ],
                         ),
                       ),
                     ),
-                  ),
-                  Container(
-                    width: 150,
-                    margin: const EdgeInsets.only(right: 20),
-                    height: categoryHeight,
-                    decoration: BoxDecoration(
-                        color: Colors.blue.shade400,
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(20.0))),
-                    child: const Padding(
-                      padding: EdgeInsets.all(12.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(
-                            "Newest",
-                            style: TextStyle(
-                                fontSize: 25,
-                                color: Colors.pink,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            "20 Items",
-                            style: TextStyle(fontSize: 16, color: Colors.white),
-                          ),
-                        ],
+                    Container(
+                      width: 150,
+                      margin: const EdgeInsets.only(right: 20),
+                      height: categoryHeight,
+                      decoration: BoxDecoration(
+                          color: Colors.blue.shade400,
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(20.0))),
+                      child: const Padding(
+                        padding: EdgeInsets.all(12.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text(
+                              "Newest",
+                              style: TextStyle(
+                                  fontSize: 25,
+                                  color: Colors.pink,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              "20 Items",
+                              style: TextStyle(fontSize: 16, color: Colors.white),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  Container(
-                    width: 150,
-                    margin: const EdgeInsets.only(right: 20),
-                    height: categoryHeight,
-                    decoration: BoxDecoration(
-                        color: Colors.blue.shade400,
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(20.0))),
-                    child: const Padding(
-                      padding: EdgeInsets.all(12.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(
-                            "Newest",
-                            style: TextStyle(
-                                fontSize: 25,
-                                color: Colors.pink,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            "20 Items",
-                            style: TextStyle(fontSize: 16, color: Colors.white),
-                          ),
-                        ],
+                    Container(
+                      width: 150,
+                      margin: const EdgeInsets.only(right: 20),
+                      height: categoryHeight,
+                      decoration: BoxDecoration(
+                          color: Colors.lightBlueAccent.shade400,
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(20.0))),
+                      child: const Padding(
+                        padding: EdgeInsets.all(12.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text(
+                              "Super\nSaving",
+                              style: TextStyle(
+                                  fontSize: 25,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              "20 Items",
+                              style: TextStyle(fontSize: 16, color: Colors.white),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  Container(
-                    width: 150,
-                    margin: const EdgeInsets.only(right: 20),
-                    height: categoryHeight,
-                    decoration: BoxDecoration(
-                        color: Colors.lightBlueAccent.shade400,
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(20.0))),
-                    child: const Padding(
-                      padding: EdgeInsets.all(12.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(
-                            "Super\nSaving",
-                            style: TextStyle(
-                                fontSize: 25,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            "20 Items",
-                            style: TextStyle(fontSize: 16, color: Colors.white),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

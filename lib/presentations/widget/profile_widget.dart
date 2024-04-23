@@ -8,7 +8,8 @@ class ProfileWidget extends StatelessWidget {
   const ProfileWidget({
     Key? key,
     required this.imagePath,
-    required this.onClicked, required bool isEdit,
+    required this.onClicked, 
+    required bool isEdit,
   }) : super(key: key);
 
   @override

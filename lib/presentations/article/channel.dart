@@ -2,7 +2,7 @@ import 'package:femmecare/presentations/dashboard.dart';
 import 'package:flutter/material.dart';
 
 class Channel extends StatelessWidget {
-  const Channel({Key? key}) : super(key: key);
+   const Channel({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,6 @@ class Channel extends StatelessWidget {
           icon: Icon(Icons.arrow_back),
           onPressed: () {
             // Navigate back to the previous route
-            // Navigator.pop(context);
             Navigator.push(
               context,
               MaterialPageRoute(
@@ -37,17 +36,17 @@ class Channel extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                        'Healthy Diet',
+                        'Period Cycle',
                         style: TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
                           color: Colors.pink.withOpacity(.8),
                         ),
                       ),
-                      const Text(
-                        'Monday, June 8',
-                        style: TextStyle(color: Colors.pink, fontSize: 17),
-                      ),
+                      // const Text(
+                      //   'Monday, June 8',
+                      //   style: TextStyle(color: Colors.pink, fontSize: 17),
+                      // ),
                     ],
                   ),
                   Stack(
@@ -100,9 +99,9 @@ class Channel extends StatelessWidget {
                     padding:
                         const EdgeInsets.only(left: 12, top: 24, bottom: 13),
                     child: Text(
-                      'Top Stories Top StoriesTop StoriesTop Stories',
+                      'Period Cycle',
                       style: TextStyle(
-                        fontSize: 35,
+                        fontSize: 25,
                         fontWeight: FontWeight.bold,
                         color: Colors.black.withOpacity(.8),
                       ),
@@ -116,25 +115,25 @@ class Channel extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          'Hossin El ghazli',
+                          'Nikita Ban',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 17),
                         ),
-                        Text(
-                          '31m ago',
-                          style: TextStyle(
-                              fontSize: 12,
-                              color: Colors.grey,
-                              fontWeight: FontWeight.bold),
-                        ),
+                        // Text(
+                        //   '31m ago',
+                        //   style: TextStyle(
+                        //       fontSize: 12,
+                        //       color: Colors.grey,
+                        //       fontWeight: FontWeight.bold),
+                        // ),
                       ],
                     ),
                   ),
                   const Padding(
                     padding: EdgeInsets.all(12),
                     child: Text(
-                      'sdfsdfsdfsdfsdfsf sdfsfsdfsdfsdfsdfsdf sfdsfdsfsdfdsfss  sfdsfdsfsdfsfdsdfsdfsdfsdfsdfsf sdfsfsdfsdfsdfsdfsdf sfdsfdsfsdfdsfss  sfdsfdsfsdfsfd',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      'This comes once a month. This comes once a month. This comes once a month. This comes once a month. This comes once a month.',
+                      style: TextStyle(fontWeight: FontWeight.normal),
                     ),
                   ),
                   const Padding(

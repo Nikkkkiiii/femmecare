@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-AppBar buildAppBar(BuildContext context) {
+AppBar buildAppBar(BuildContext context, {required String title}) {
   final icon = CupertinoIcons.moon_stars;
 
   return AppBar(

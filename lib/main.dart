@@ -1,9 +1,13 @@
+import 'package:femmecare/bloc/channel/article_bloc.dart';
+import 'package:femmecare/bloc/chat/chat_bloc.dart';
 import 'package:femmecare/bloc/login/login_bloc.dart';
 import 'package:femmecare/bloc/signup/signup_bloc.dart';
+import 'package:femmecare/data/channel/article_repo.dart';
 import 'package:femmecare/data/login/login_repo.dart';
 import 'package:femmecare/data/signup/signup_repo.dart';
-// import 'package:femmecare/data/login/login_repo.dart';
-import 'package:femmecare/presentations/channel.dart';
+import 'package:femmecare/presentations/article/addArticle.dart';
+import 'package:femmecare/presentations/article/article_list.dart';
+import 'package:femmecare/presentations/article/channel.dart';
 import 'package:femmecare/presentations/dashboard.dart';
 import 'package:femmecare/presentations/signup.dart';
 import 'package:flutter/material.dart';
@@ -41,6 +45,14 @@ class MyApp extends StatelessWidget {
                 LoginBloc(LoginRepo:LoginRepo()),
             child: Container(),
           ),
+          BlocProvider(
+            create: (context) => ChatListBloc(),
+            child: Container(),
+          ),
+          BlocProvider(
+            create: (context) => ArticleBloc(),
+            child: Container(),
+          )
          
         ],
         child: MaterialApp(
@@ -51,15 +63,15 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Signup(),
+      home: Login(),
       // initialRoute: "/signUp",
       routes: {
-        '/signUp': (context) => Signup(),
+        '/signUp': (context) => const Signup(),
         '/login': (context) => Login(),
-        '/cal': (context) => Calendar(),
-        '/chan':(context) => Channel(),
-        '/otp':(context) => Calendar()
-        // '/profile':(context) => ProfilePage(),
+        '/cal': (context) => const Calendar(),
+        '/chan':(context) => const ArticleList(),
+        '/otp':(context) => const Calendar(),
+        '/art': (context) => ArticleList() ,
       },
     ));
     

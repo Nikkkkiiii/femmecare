@@ -47,6 +47,9 @@ class _LoginState extends State<Login> {
           }
         },
         child: Scaffold(
+        appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 255, 255, 255),
+        ),
           backgroundColor: Colors.pink,
           body: SingleChildScrollView(
             child: SafeArea(

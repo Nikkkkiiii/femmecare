@@ -45,11 +45,17 @@ dependencies:
   animated_theme_switcher: ^2.0.10
   flutter_calendar_carousel: ^2.4.2
   fluttertoast: ^8.2.4
-  flutter_map: ^6.1.0
-  latlong2: ^0.9.0
   url_launcher: ^6.2.5
   dio: ^5.4.2
   shared_preferences: ^2.2.2
+  web_socket_channel: ^2.4.5
+  image_picker: ^1.0.8
+  date_time: ^0.10.0
+  # google_maps_flutter: ^2.6.1
+  # geocoding: ^3.0.0
+  geolocator: ^7.6.2
+  google_maps_flutter: ^2.0.10
+  geocoding: ^2.0.0
 
  
 
