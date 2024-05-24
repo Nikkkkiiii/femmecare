@@ -1,7 +1,5 @@
 class AppUrls {
   static const baseUrl = "http://192.168.1.80:8000";
-
-  //endpoints
   static const login = '$baseUrl/user/login/';
   static const signup = '$baseUrl/user/signup/';
   static const viewProfile = '$baseUrl/user/saveProfile/'; 

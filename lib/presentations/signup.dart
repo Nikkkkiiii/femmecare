@@ -1,5 +1,6 @@
 import 'package:femmecare/bloc/signup/signup_bloc.dart';
 import 'package:femmecare/presentations/login.dart';
+import 'package:femmecare/presentations/otp_page.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,13 +15,13 @@ class Signup extends StatefulWidget {
 class _SignUpState extends State<Signup> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  // TextEditingController confirmPasswordController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
   TextEditingController phoneNumberController = TextEditingController();
   TextEditingController usernameController = TextEditingController();
   TextEditingController addressController = TextEditingController();
   // TextEditingController firstNameController = TextEditingController();
   // TextEditingController lastNameController = TextEditingController();
-  // TextEditingController profileImageController = TextEditingController();
+  TextEditingController profileImageController = TextEditingController();
 
   bool value = false;
   bool _showPassword = false;
@@ -139,7 +140,7 @@ class _SignUpState extends State<Signup> {
                       ),
                     ),
                   ),
-                   Padding(
+                  Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 40, vertical: 16),
                     child: TextFormField(
@@ -155,21 +156,21 @@ class _SignUpState extends State<Signup> {
                       ),
                     ),
                   ),
-                  // Padding(
-                  //   padding: const EdgeInsets.symmetric(
-                  //       horizontal: 40, vertical: 16),
-                  //   child: TextFormField(
-                  //     // controller: confirmPasswordController,
-                  //     decoration: const InputDecoration(
-                  //       border: UnderlineInputBorder(),
-                  //       labelText: 'Confirm Password',
-                  //       labelStyle: TextStyle(color: Colors.white),
-                  //       enabledBorder: UnderlineInputBorder(
-                  //         borderSide: BorderSide(color: Colors.white),
-                  //       ),
-                  //     ),
-                  //   ),
-                  // ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 40, vertical: 16),
+                    child: TextFormField(
+                      controller: confirmPasswordController,
+                      decoration: const InputDecoration(
+                        border: UnderlineInputBorder(),
+                        labelText: 'Confirm Password',
+                        labelStyle: TextStyle(color: Colors.white),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  ),
                   Row(
                     children: [
                       Checkbox(
@@ -205,19 +206,23 @@ class _SignUpState extends State<Signup> {
                       print(emailController.text);
                       context.read<SignupBloc>().add(
                             SignupButtonPressed(
-                                email: emailController.text,
-                                password: passwordController.text,
-                                address: addressController.text,
-                                // firstName: firstNameController.text,
-                                // lastName: lastNameController.text,
-                                // profileImage: profileImageController.text,
-                                username: usernameController.text,
-                                // confirmPassword : confirmPasswordController.text,
-                                phone_number: phoneNumberController.text,
-                                ),
+                              email: emailController.text,
+                              password: passwordController.text,
+                              address: addressController.text,
+                              // firstName: firstNameController.text,
+                              // lastName: lastNameController.text,
+                              // profileImage: profileImageController.text,
+                              username: usernameController.text,
+                              confirmPassword : confirmPasswordController.text,
+                              phone_number: phoneNumberController.text,
+                            ),
                           );
 
                       // Navigator.pushReplacementNamed(context, '/login');
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => OtpScreen()),
+                      );
                       // Perform an action when the button is pressed
                     },
                     style: ElevatedButton.styleFrom(

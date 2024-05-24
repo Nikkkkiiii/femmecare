@@ -1,4 +1,5 @@
 import 'package:femmecare/bloc/login/login_bloc.dart';
+import 'package:femmecare/presentations/forgot_password.dart';
 import 'package:femmecare/presentations/widget/custom_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -32,9 +33,7 @@ class _LoginState extends State<Login> {
           }
           if (state is LoginLoading) {
             ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-              content: Text('Please Wait'),
-              duration: Duration(seconds: 1)
-            ));
+                content: Text('Please Wait'), duration: Duration(seconds: 1)));
           }
           if (state is LoginSuccess) {
             ScaffoldMessenger.of(context).showSnackBar(
@@ -47,9 +46,9 @@ class _LoginState extends State<Login> {
           }
         },
         child: Scaffold(
-        appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 255, 255, 255),
-        ),
+          appBar: AppBar(
+            backgroundColor: Color.fromARGB(255, 255, 255, 255),
+          ),
           backgroundColor: Colors.pink,
           body: SingleChildScrollView(
             child: SafeArea(
@@ -81,11 +80,19 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                   const SizedBox(height: 10),
-                  Container(
-                      child: const Text(
-                    'Forgot Password?',
-                    style: TextStyle(color: Colors.white),
-                  )),
+                  InkWell(
+                    child: Container(
+                        child: const Text(
+                      'Forgot Password?',
+                      style: TextStyle(color: Colors.white),
+                    )),
+                    onTap: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => ForgotPassword()),
+                      );
+                    },
+                  ),
                   const SizedBox(height: 20),
                   ElevatedButton(
                     onPressed: () {

@@ -21,5 +21,5 @@ class SignupButtonPressed extends SignupEvent{
                         // required this.lastName, 
                         // required this.profileImage, 
                         required this.phone_number,
-                        required this.username});
+                        required this.username, required String confirmPassword});
 }

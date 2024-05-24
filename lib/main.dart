@@ -2,13 +2,12 @@ import 'package:femmecare/bloc/channel/article_bloc.dart';
 import 'package:femmecare/bloc/chat/chat_bloc.dart';
 import 'package:femmecare/bloc/login/login_bloc.dart';
 import 'package:femmecare/bloc/signup/signup_bloc.dart';
-import 'package:femmecare/data/channel/article_repo.dart';
 import 'package:femmecare/data/login/login_repo.dart';
 import 'package:femmecare/data/signup/signup_repo.dart';
-import 'package:femmecare/presentations/article/addArticle.dart';
 import 'package:femmecare/presentations/article/article_list.dart';
-import 'package:femmecare/presentations/article/channel.dart';
 import 'package:femmecare/presentations/dashboard.dart';
+import 'package:femmecare/presentations/forgot_password.dart';
+import 'package:femmecare/presentations/otp_page.dart';
 import 'package:femmecare/presentations/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:femmecare/presentations/login.dart';
@@ -63,7 +62,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Login(),
+      home: const OtpScreen(),
       // initialRoute: "/signUp",
       routes: {
         '/signUp': (context) => const Signup(),
