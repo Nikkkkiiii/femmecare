@@ -50,7 +50,7 @@ class ArticleBloc extends Bloc<ArticleEvent, ArticleState>{
         await ArticleListRepo().addArticle(
           description: event.description,
           title: event.title,
-          Image: event.Image,
+          image: event.Image,
           );
           print("bloc");
           emit(ArticlePostSuccess());
@@ -80,3 +80,4 @@ class ArticleBloc extends Bloc<ArticleEvent, ArticleState>{
       }
     }
   
+

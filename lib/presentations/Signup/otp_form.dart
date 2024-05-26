@@ -10,29 +10,38 @@ class OtpForm extends StatefulWidget {
 }
 
 class _OtpFormState extends State<OtpForm> {
-  FocusNode? pin2FocusNode;
-  FocusNode? pin3FocusNode;
-  FocusNode? pin4FocusNode;
+  late FocusNode pin1FocusNode;
+  late FocusNode pin2FocusNode;
+  late FocusNode pin3FocusNode;
+  late FocusNode pin4FocusNode;
+  late FocusNode pin5FocusNode;
+  late FocusNode pin6FocusNode;
 
   @override
   void initState() {
     super.initState();
+    pin1FocusNode = FocusNode();
     pin2FocusNode = FocusNode();
     pin3FocusNode = FocusNode();
     pin4FocusNode = FocusNode();
+    pin5FocusNode = FocusNode();
+    pin6FocusNode = FocusNode();
   }
 
   @override
   void dispose() {
+    pin1FocusNode.dispose();
+    pin2FocusNode.dispose();
+    pin3FocusNode.dispose();
+    pin4FocusNode.dispose();
+    pin5FocusNode.dispose();
+    pin6FocusNode.dispose();
     super.dispose();
-    pin2FocusNode!.dispose();
-    pin3FocusNode!.dispose();
-    pin4FocusNode!.dispose();
   }
 
-  void nextField(String value, FocusNode? focusNode) {
+  void nextField(String value, FocusNode focusNode) {
     if (value.length == 1) {
-      focusNode!.requestFocus();
+      focusNode.requestFocus();
     }
   }
 
@@ -48,43 +57,13 @@ class _OtpFormState extends State<OtpForm> {
               SizedBox(
                 width: 40,
                 child: TextFormField(
+                  focusNode: pin1FocusNode,
                   autofocus: true,
                   obscureText: true,
                   style: const TextStyle(fontSize: 24),
                   keyboardType: TextInputType.number,
                   textAlign: TextAlign.center,
-                  // decoration: otpInputDecoration,
-                  onChanged: (value) {
-                    nextField(value, pin2FocusNode);
-                  },
-                ),
-              ),
-              SizedBox(
-                width: 40,
-                child: TextFormField(
-                  autofocus: true,
-                  obscureText: true,
-                  style: const TextStyle(fontSize: 24),
-                  keyboardType: TextInputType.number,
-                  textAlign: TextAlign.center,
-                  // decoration: otpInputDecoration,
-                  onChanged: (value) {
-                    nextField(value, pin2FocusNode);
-                  },
-                ),
-              ),
-              SizedBox(
-                width: 40,
-                child: TextFormField(
-                  autofocus: true,
-                  obscureText: true,
-                  style: const TextStyle(fontSize: 24),
-                  keyboardType: TextInputType.number,
-                  textAlign: TextAlign.center,
-                  // decoration: otpInputDecoration,
-                  onChanged: (value) {
-                    nextField(value, pin2FocusNode);
-                  },
+                  onChanged: (value) => nextField(value, pin2FocusNode),
                 ),
               ),
               SizedBox(
@@ -95,7 +74,6 @@ class _OtpFormState extends State<OtpForm> {
                   style: const TextStyle(fontSize: 24),
                   keyboardType: TextInputType.number,
                   textAlign: TextAlign.center,
-                  // decoration: otpInputDecoration,
                   onChanged: (value) => nextField(value, pin3FocusNode),
                 ),
               ),
@@ -107,7 +85,6 @@ class _OtpFormState extends State<OtpForm> {
                   style: const TextStyle(fontSize: 24),
                   keyboardType: TextInputType.number,
                   textAlign: TextAlign.center,
-                  // decoration: otpInputDecoration,
                   onChanged: (value) => nextField(value, pin4FocusNode),
                 ),
               ),
@@ -119,11 +96,32 @@ class _OtpFormState extends State<OtpForm> {
                   style: const TextStyle(fontSize: 24),
                   keyboardType: TextInputType.number,
                   textAlign: TextAlign.center,
-                  // decoration: otpInputDecoration,
+                  onChanged: (value) => nextField(value, pin5FocusNode),
+                ),
+              ),
+              SizedBox(
+                width: 40,
+                child: TextFormField(
+                  focusNode: pin5FocusNode,
+                  obscureText: true,
+                  style: const TextStyle(fontSize: 24),
+                  keyboardType: TextInputType.number,
+                  textAlign: TextAlign.center,
+                  onChanged: (value) => nextField(value, pin6FocusNode),
+                ),
+              ),
+              SizedBox(
+                width: 40,
+                child: TextFormField(
+                  focusNode: pin6FocusNode,
+                  obscureText: true,
+                  style: const TextStyle(fontSize: 24),
+                  keyboardType: TextInputType.number,
+                  textAlign: TextAlign.center,
                   onChanged: (value) {
                     if (value.length == 1) {
-                      pin4FocusNode!.unfocus();
-                      // Then you need to check is the code is correct or not
+                      pin6FocusNode.unfocus();
+                      // Then you need to check if the code is correct or not
                     }
                   },
                 ),
@@ -132,7 +130,9 @@ class _OtpFormState extends State<OtpForm> {
           ),
           SizedBox(height: MediaQuery.of(context).size.height * 0.15),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              // Add your continue button action here
+            },
             child: const Text("Continue"),
           ),
         ],

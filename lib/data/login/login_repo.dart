@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:femmecare/constant/apis.dart';
@@ -10,7 +9,9 @@ class LoginRepo{
 
   Future<User> loginUser( {required String email, required String password})async{
 
-    Response response = await dio.post(
+    print("helloooooo");
+
+    final response = await dio.post(
       AppUrls.login,
       data: {
         'email':email,
@@ -18,13 +19,11 @@ class LoginRepo{
       },
     );
     
-    // print("repo");
-    print(response.data);
-    // print("repo");
-    print(response.data);
+    print("niki$response"); 
+   
     // var decoded=jsonDecode(response.data);
     User user = User.fromMap(response.data);
-    print("repo repo");
+    print("repo repo $user");
 
     await SharedUtils.saveToken(user.accessToken);
     return user;

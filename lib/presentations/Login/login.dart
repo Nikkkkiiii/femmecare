@@ -1,5 +1,5 @@
 import 'package:femmecare/bloc/login/login_bloc.dart';
-import 'package:femmecare/presentations/forgot_password.dart';
+import 'package:femmecare/presentations/Login/forgot_password.dart';
 import 'package:femmecare/presentations/widget/custom_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -61,7 +61,7 @@ class _LoginState extends State<Login> {
                   Container(
                     child: CustomTextFormField(
                       controller: emailController,
-                      hintText: "username",
+                      hintText: "Email",
                       hintStyle: const TextStyle(color: Colors.white),
                       // controller: idcontroller,
                     ),
@@ -104,11 +104,7 @@ class _LoginState extends State<Login> {
                             ),
                           );
                     },
-                    // style: ElevatedButton.styleFrom(
-                    //   backgroundColor: Colors.white,
-                    //   fixedSize: const Size(200, 50),
-                    //   // elevation: 4,
-                    // ),
+                   
                     child: const Text(
                       'log in',
                       style: TextStyle(color: Colors.pink),

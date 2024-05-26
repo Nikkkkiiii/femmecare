@@ -5,12 +5,12 @@ import 'package:femmecare/bloc/signup/signup_bloc.dart';
 import 'package:femmecare/data/login/login_repo.dart';
 import 'package:femmecare/data/signup/signup_repo.dart';
 import 'package:femmecare/presentations/article/article_list.dart';
-import 'package:femmecare/presentations/dashboard.dart';
-import 'package:femmecare/presentations/forgot_password.dart';
-import 'package:femmecare/presentations/otp_page.dart';
-import 'package:femmecare/presentations/signup.dart';
+import 'package:femmecare/presentations/calendar/calendar.dart';
+import 'package:femmecare/presentations/dashboard/dashboard.dart';
+import 'package:femmecare/presentations/Signup/signup.dart';
+import 'package:femmecare/presentations/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:femmecare/presentations/login.dart';
+import 'package:femmecare/presentations/Login/login.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
@@ -33,7 +33,6 @@ class MyApp extends StatelessWidget {
 
     return MultiBlocProvider(
         providers: [
-          
           BlocProvider(
             create: (context)=>
               SignupBloc(SignupRepo:SignupRepo()),
@@ -51,7 +50,8 @@ class MyApp extends StatelessWidget {
           BlocProvider(
             create: (context) => ArticleBloc(),
             child: Container(),
-          )
+          ),
+          
          
         ],
         child: MaterialApp(
@@ -62,7 +62,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const OtpScreen(),
+      home: SplashScreen(),
       // initialRoute: "/signUp",
       routes: {
         '/signUp': (context) => const Signup(),

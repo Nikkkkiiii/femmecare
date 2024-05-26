@@ -30,7 +30,7 @@ class EditProfileRepo {
           'username': username,
           'name': name,
           'description': description,
-          // 'image': await MultipartFile.fromFile("${image!.path}" ),
+          'image': await MultipartFile.fromFile(image!.path ),
         });
       } else {
         formData = FormData.fromMap({

@@ -32,7 +32,7 @@ class _ChatPageState extends State<ChatPage> {
   void initState() {
     super.initState();
     channel = IOWebSocketChannel.connect(
-        'ws://192.168.1.80:8000/ws/chat/${widget.myId}/${widget.userId}/');
+        'ws://192.168.1.81:8000/ws/chat/${widget.myId}/${widget.userId}/');
 
     // Handle incoming messages
     channel.stream.listen((message) {

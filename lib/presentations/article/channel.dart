@@ -1,4 +1,4 @@
-import 'package:femmecare/presentations/dashboard.dart';
+import 'package:femmecare/presentations/dashboard/dashboard.dart';
 import 'package:flutter/material.dart';
 
 class Channel extends StatelessWidget {

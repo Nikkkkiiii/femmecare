@@ -7,6 +7,7 @@ part 'login_event.dart';
 part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
+
   LoginBloc({required LoginRepo LoginRepo}) : super(LoginInitial()) {
     on<LoginEvent>((event, emit) => loginList(event, emit ));
   }

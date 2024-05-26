@@ -1,5 +1,5 @@
-import 'package:femmecare/presentations/forgot_password.dart';
-import 'package:femmecare/presentations/otp_form.dart';
+import 'package:femmecare/presentations/Login/forgot_password.dart';
+import 'package:femmecare/presentations/Signup/otp_form.dart';
 import 'package:flutter/material.dart';
 
 class OtpScreen extends StatelessWidget {

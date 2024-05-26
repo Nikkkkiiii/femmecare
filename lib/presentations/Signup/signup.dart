@@ -1,6 +1,6 @@
 import 'package:femmecare/bloc/signup/signup_bloc.dart';
-import 'package:femmecare/presentations/login.dart';
-import 'package:femmecare/presentations/otp_page.dart';
+import 'package:femmecare/presentations/Login/login.dart';
+import 'package:femmecare/presentations/Signup/otp_page.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -53,17 +53,7 @@ class _SignUpState extends State<Signup> {
                 duration: Duration(seconds: 1),
               ),
             );
-            // print("\n\n\n");
-            // // print(state.signupModel.otp_key);
-            // print("\n\n\n");
-
-            // Navigator.push(
-            //     context,
-            //     GeneratedRoute().onGeneratedRoute(RouteSettings(arguments: {
-            //       'otp_key': state.signupModel.otp_key,
-            //       'email': state.signupModel.email
-            //     }, name: '/otp')));
-
+            
             Navigator.pushReplacementNamed(context, '/login');
           }
         },
@@ -77,7 +67,7 @@ class _SignUpState extends State<Signup> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const SizedBox(
-                    height: 120,
+                    height: 30,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(

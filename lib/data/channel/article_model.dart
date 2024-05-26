@@ -60,7 +60,7 @@ class ArticleListModel {
       article_content: map['article_content'] as String,
       article_date: DateTime.parse(map['article_date']),
       user_name: map['user_name'] as String,
-      user_id: int.parse(map['user_id']),
+      user_id: int.parse(map['user_id'].toString()),
     );
   }
 

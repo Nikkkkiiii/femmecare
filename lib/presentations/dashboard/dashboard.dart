@@ -1,8 +1,9 @@
-import 'package:femmecare/presentations/calendar.dart';
+import 'package:dio/dio.dart';
+import 'package:femmecare/presentations/calendar/calendar.dart';
 import 'package:femmecare/presentations/chatt/chatList.dart';
-import 'package:femmecare/presentations/map_page.dart';
-import 'package:femmecare/presentations/notification.dart';
-import 'package:femmecare/presentations/profile.dart';
+import 'package:femmecare/presentations/map/map_page.dart';
+import 'package:femmecare/presentations/notification/notification.dart';
+import 'package:femmecare/presentations/profile/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -19,6 +20,32 @@ class _CalendarState extends State<Calendar> {
   DateTime selectedDay = DateTime.now();
   DateTime focusedDay = DateTime.now();
   int _selectedIndex = 0;
+  final Dio dio = Dio(); // Initialize Dio instance
+
+    dynamic getAllSpacesTypes() async {
+    try {
+
+
+    var data = {
+      "user": 25,
+      "message": "This is an emergency message",
+      "location": "Current location info",
+      "timestamp": DateTime.now().toIso8601String() // Ensure you have a valid timestamp
+    };
+      var res = await dio.post('http://192.168.1.80:8000/emergencyButton/emergency/', data:data);
+    print(res.data);
+      // var data = res.data;
+      if (data['status'] == 200) {
+        return data['storeType'];
+      } else {
+        return [];
+      }
+    } catch (e) {
+      print(e);
+      print("nikkiiiiiiiiiiii");
+      return [];
+    }
+  }
 
   void _onItemTapped(int index) {
     setState(() {
@@ -84,7 +111,7 @@ class _CalendarState extends State<Calendar> {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const Calendars()),
+                MaterialPageRoute(builder: (context) => Calendars()),
               );
             },
             child: TableCalendar(
@@ -141,7 +168,8 @@ class _CalendarState extends State<Calendar> {
               shape: BoxShape.circle,
             ),
             child: ElevatedButton(
-              onPressed: () {
+              onPressed: () async {
+                dynamic spaceTypes = await getAllSpacesTypes();
                 launchUrl(Uri.parse('sms:9807956872'));
               },
               style: ElevatedButton.styleFrom(

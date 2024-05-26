@@ -1,4 +1,4 @@
-import 'package:femmecare/presentations/edit_Profile.dart';
+import 'package:femmecare/presentations/profile/edit_Profile.dart';
 import 'package:femmecare/presentations/widget/appbar_widget.dart';
 import 'package:femmecare/presentations/widget/button_widget.dart';
 import 'package:femmecare/presentations/widget/numbers_widget.dart';
